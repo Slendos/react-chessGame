@@ -1,0 +1,281 @@
+body {
+  background-color: #d0d0d0;
+}
+
+/*******  CHESSBOARD  **********/
+.chessboard {
+  display: inline-block;
+  position: relative;
+  width: 656px;
+  height: 656px;
+  margin: 20px;
+  border: 25px solid #333;
+}
+
+.square {
+  float: left;
+  width: 78px;
+  height: 78px;
+  background-color: #999;
+  border: 2px solid black;
+  font-size: 50px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.chessPieceImg {
+  width: 60px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.square:nth-child(2n + 1) {
+  background-color: black;
+}
+
+.square:nth-child(2n + 1) {
+  background-color: white;
+}
+
+/*********  VALID MOVES ****************/
+.validMove {
+  /* filter: grayscale(115%); */
+  box-shadow: inset 0 0 15px #0f0;
+  cursor: pointer;
+}
+
+.reverse {
+  transform: rotate(180deg);
+}
+
+.parent {
+  position: relative;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+/*****  NUMBERS NOTATION ********/
+.numParent {
+  position: absolute;
+  width: 15px;
+  height: 652px;
+
+  color: white;
+  margin-bottom: 0px;
+  right: 25px;
+  top: 57px;
+}
+
+.num {
+  font-family: Arial;
+  font-weight: bold;
+  height: 62px;
+  display: inline-block;
+  padding-top: 20px;
+  margin-bottom: 0;
+}
+
+/******** ALPHABET NOTATION ******/
+.alphParent {
+  text-align: left;
+  position: absolute;
+  margin-top: 10px;
+
+  width: 656px;
+  height: 15px;
+  color: white;
+
+  bottom: 30px;
+  left: 45px;
+}
+
+.alph {
+  font-family: Arial;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  width: 82px;
+}
+
+/***********TIME******************/
+.parentTime {
+}
+
+.timeBlack {
+  margin-top: 70px;
+}
+
+.timeWhite {
+  margin-top: 0px;
+}
+
+.time {
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.timeDetail {
+  margin-top: 10px;
+}
+
+/*********MOVES HISTORY BOARD**********/
+
+.sideboard-turn {
+  width: 5vh;
+  height: 5vh;
+  margin-left: 2vh;
+  border-radius: 50%;
+}
+
+.white {
+  background-color: white;
+}
+
+.turn-invisible {
+  opacity: 0;
+}
+
+.black {
+  background-color: black;
+}
+
+.moveBoard {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  height: 400px;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: left;
+  overflow: auto;
+}
+
+.history-parent {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.history {
+  flex: 0 49%;
+  margin-top: 5px;
+  padding: 5px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.history:hover {
+  border: 2px solid green;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.current {
+  border: 2px solid green;
+  background-color: green;
+}
+
+/* ::-webkit-scrollbar,
+  ::-webkit-scrollbar-corner {
+    width: 8px;
+    background: #eee;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(204, 204, 204, 0.7);
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: 0 0 6px rgba(50, 50, 50, 0.3);
+  } */
+
+.fa-buttons {
+  text-align: center;
+}
+
+.fa-buttons button {
+  text-align: center;
+  transform: scaleX(-1);
+  background: none;
+  border: 2px solid black;
+  margin-right: 4px;
+}
+
+.black-background {
+  background: black !important;
+}
+
+.white-background {
+  background: white !important;
+  color: black;
+}
+
+.buttons-wrapper {
+  text-align: center;
+  margin-top: 2vh;
+}
+
+.button-rotate {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.button-reset {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.popup-wrapper {
+  display: table;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -50px;
+  width: 300px;
+  height: 100px;
+  border: 2px solid black;
+  z-index: 5;
+  text-align: center;
+}
+
+.black-square {
+  color: black;
+  position: relative !important;
+  float: left !important;
+  width: 82px !important;
+  height: 82px !important;
+  background-color: #f0d9b5;
+  text-align: center !important;
+  display: table-cell !important;
+  vertical-align: middle !important;
+}
+
+.white-square {
+  color: white;
+  position: relative;
+  float: left;
+  width: 82px;
+  height: 82px;
+  background-color: #b48863;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
