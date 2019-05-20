@@ -8,10 +8,16 @@
 
 ### + handeled all check/mate possibilities
 
+### + reverse board
+
 ## TODO
+
+### - simplify state
 
 ### - add timer
 
 ### - check for draw
 
 ### - check for three same moves from each opponent
+
+### - ?add AI?
