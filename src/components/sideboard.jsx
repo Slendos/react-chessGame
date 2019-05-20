@@ -12,7 +12,7 @@ class Sideboard extends Component {
     } = this.props;
 
     let turn = turn_white;
-
+    console.log(this.props);
     if (isReverse) turn = !turn;
     return (
       <div>
@@ -21,7 +21,10 @@ class Sideboard extends Component {
             "turn-invisible"}`}
         />
         <div className="parentTime">
-          <div className="moveBoard">
+          <div
+            className="moveBoard"
+            style={{ border: history.length > 0 && "2px solid black" }}
+          >
             <div>
               <Movement
                 history={history}

@@ -51,7 +51,7 @@ class Square extends Component {
         className={`${square} ${higlighted && "validMove"}`}
         title={data.squareId}
         onDragOver={e => e.preventDefault()}
-        onDrop={e => handleMove(this.props.data)}
+        onDrop={e => handleMove(data)}
         draggable="false"
       >
         {data.chessPiece !== 0 && (

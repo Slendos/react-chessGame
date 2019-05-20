@@ -17,6 +17,7 @@ import movePiece from "./utils/movePiece";
 import passantMove from "./utils/passantMove";
 
 import "react-toastify/dist/ReactToastify.css";
+import { prepareBoard } from "./utils/prepareBoard";
 
 toast.configure();
 
@@ -52,56 +53,10 @@ class Chess extends Component {
   }
 
   renderBoard = () => {
-    let wholeBoard = Array(120);
-    let board = Array(64);
-
-    // prettier-ignore
-    let startBoard = [
-      "wR", "wN", "wB", "wK", "wQ", "wB", "wN", "wR",
-      "wP", "wP", "wP", "wP", "wP", "wP", "wP", "wP",
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      "bP", "bP", "bP", "bP", "bP", "bP", "bP", "bP",
-      "bR", "bN", "bB", "bK", "bQ", "bB", "bN", "bR"
-    ];
-
-    let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
-    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    for (let i = 0; i < wholeBoard.length; i++) {
-      wholeBoard[i] = i;
-    }
-
-    let count = 0;
-
-    // getting only inside of the array
-    for (let i = 21; i < wholeBoard.length - 21; i++) {
-      if (wholeBoard[i] % 10 === 0 || wholeBoard[i] % 10 === 9) continue;
-      board[count] = wholeBoard[i];
-      count++;
-    }
-
-    let c = 0;
-    let obj = [];
-    letters.reverse();
-    // [positionOnBoard, numberedPosition, chessPiece]
-    for (let k = 0; k < numbers.length; k++) {
-      for (let i = 0; i < letters.length; i++) {
-        obj.push({
-          squareId: `${letters[i]}${numbers[k]}`,
-          calcId: board[c],
-          chessPiece: startBoard[c],
-          id: board.length - c - 1,
-          moved: false
-        });
-        c++;
-      }
-    }
-
+    let board = prepareBoard();
     // starting state
     this.setState({
-      board: obj.reverse(),
+      board: board,
       validMoves: [],
       clicked: false,
       previousClicked: [],
@@ -157,7 +112,7 @@ class Chess extends Component {
     const { board: boardState, previousClicked, clicked, lastMove } = this.state;
     const { turn_white } = this.state;
 
-    // check if it is second click in row
+    // check if it is second click in row or clicked on empty square
     if (clickedPiece.chessPiece === 0 || !this.state.current) return;
 
     let boardCopy = [...boardState];
@@ -177,7 +132,7 @@ class Chess extends Component {
     });
   };
 
-  // second click on piece
+  // second click -> moving figure
   handleMove = clickedPiece => {
     // prettier-ignore
     const { board: boardState, previousClicked, clicked, validMoves, lastMove, turn_white } = this.state;
@@ -224,7 +179,7 @@ class Chess extends Component {
           className: "white-background"
         });
       else {
-        toast.info("check");
+        toast.info("check", toastOptions);
       }
       // toast("ez win");
     } else if (checkedWhite) {
