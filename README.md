@@ -1,5 +1,7 @@
 # React Artifact Game
 
+![alt text](https://github.com/Slendos/react-chessGame/blob/master/src/images/chess-project.png)
+
 ## Features
 
 ### + click/drag figures
