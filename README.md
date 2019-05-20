@@ -12,14 +12,16 @@
 
 ### + reverse board
 
+### + history of moves
+
 ## TODO
 
 ### - simplify state
 
 ### - add timer
 
-### - check for draw
+### - create buttons to better navigate history
 
-### - check for three same moves from each opponent
+### - check for draw && check for three same moves from each opponent
 
 ### - ?add AI?
