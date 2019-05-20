@@ -21,7 +21,6 @@ export function prepareBoard() {
   }
 
   let count = 0;
-
   // getting only inside of the array
   for (let i = 21; i < wholeBoard.length - 21; i++) {
     if (wholeBoard[i] % 10 === 0 || wholeBoard[i] % 10 === 9) continue;
