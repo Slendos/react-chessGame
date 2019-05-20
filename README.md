@@ -2,16 +2,16 @@
 
 ## Features
 
-### click/drag figures
+### + click/drag figures
 
-### all possible pieces movement
+### + all possible pieces movement
 
-### handeled all check/mate possibilities
+### + handeled all check/mate possibilities
 
 ## TODO
 
-### add timer
+### - add timer
 
-### check for draw
+### - check for draw
 
-### check for three same moves from each opponent
+### - check for three same moves from each opponent
