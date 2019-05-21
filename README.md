@@ -17,25 +17,25 @@
 
 ## Features
 
-- click/drag figures
+- [x] click/drag figures
 
-- all possible pieces movement
+- [x] all possible pieces movement
 
-- handeled all check/mate possibilities
+- [x] handeled all check/mate possibilities
 
-- reverse board
+- [x] reverse board
 
-- history of moves
+- [x] history of moves
 - [x] One-liner explaining the purpose of the module
 
 ## Todo
 
-- simplify state
+- [ ] simplify state
 
-- add timer
+- [ ] add timer
 
-- create buttons to better navigate history
+- [ ] create buttons to better navigate history
 
-- check for draw && check for three same moves from each opponent
+- [ ] check for draw && check for three same moves from each opponent
 
-- ???add AI???
+- [ ] ???add AI???
