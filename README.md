@@ -4,10 +4,10 @@
 
 ## Build with
 
-- [HTML]
-- [CSS]
-- [Javascript]
-- [React]
+- <b>HTML</b>
+- CSS
+- Javascript
+- React
 
 ## Features
 
