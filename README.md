@@ -4,10 +4,16 @@
 
 ## Build with
 
+### Languages
+
 - <b>HTML</b>
-- CSS
-- Javascript
-- React
+- <b>CSS</b>
+- <b>Javascript</b>
+
+### Libraries
+
+- <b>React: 16.8.6</b>
+- <b>react-toastify: 5.1.0
 
 ## Features
 
