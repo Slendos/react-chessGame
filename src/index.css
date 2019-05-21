@@ -17,6 +17,7 @@ img {
   height: 656px;
   margin: 20px;
   border: 25px solid #333;
+  border-radius: 1vh;
 }
 
 .square {
@@ -29,6 +30,7 @@ img {
   text-align: center;
   display: table-cell;
   vertical-align: middle;
+  /* border-radius: 1vh; */
 }
 
 .chessPieceImg {
@@ -162,6 +164,7 @@ img {
   border-radius: 8px;
   text-align: left;
   overflow: auto;
+  /* background: linear-gradient(45deg, #ffffff, #000000); */
 }
 
 .history-parent {

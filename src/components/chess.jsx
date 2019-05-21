@@ -110,10 +110,13 @@ class Chess extends Component {
   handleClick = clickedPiece => {
     // prettier-ignore
     const { board: boardState, previousClicked, clicked, lastMove } = this.state;
-    const { turn_white } = this.state;
+    const { turn_white, current } = this.state;
 
     // check if it is second click in row or clicked on empty square
-    if (clickedPiece.chessPiece === 0 || !this.state.current) return;
+    if (!current) {
+      toast.error("You cant rewrite history! return to latest move");
+      return;
+    } else if (clickedPiece.chessPiece === 0) return;
 
     let boardCopy = [...boardState];
     // let chessPiece = clickedPiece.chessPiece.substring(1, 2);
