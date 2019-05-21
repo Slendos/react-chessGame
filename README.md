@@ -1,6 +1,6 @@
 # React Artifact Game
 
-![chess game showcase](https://github.com/Slendos/react-chessGame/blob/master/src/images/chess-project.png)
+![movie database showcase](https://github.com/Slendos/my-movie-database/blob/master/src/images/movie-gallery.png)
 
 ## Build with
 
