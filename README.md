@@ -26,7 +26,7 @@
 - reverse board
 
 - history of moves
-- [ ] One-liner explaining the purpose of the module
+- [x] One-liner explaining the purpose of the module
 
 ## Todo
 
