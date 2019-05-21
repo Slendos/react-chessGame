@@ -6,14 +6,14 @@
 
 ### Languages
 
-- <b>HTML</b>
-- <b>CSS</b>
-- <b>Javascript</b>
+- HTML
+- CSS<
+- Javascript
 
 ### Libraries
 
-- <b>React: 16.8.6</b>
-- <b>react-toastify: 5.1.0
+- React: 16.8.6
+- react-toastify: 5.1.0
 
 ## Features
 
