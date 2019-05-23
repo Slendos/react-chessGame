@@ -10,10 +10,11 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 export default class pieces {
-  constructor(data, piece, lastMove) {
+  constructor(data, piece, lastMove, isChecked) {
     this.data = data;
     this.piece = piece;
     this.lastMove = lastMove;
+    this.isChecked = isChecked;
   }
 
   // PAWN's MOVES
@@ -90,6 +91,9 @@ export default class pieces {
       }
     }
 
+    // console.log(isChecked, "isCHecked");
+    // if king is checked player can't do rochade
+    if (this.isChecked) return moves;
     // SMALL ROCHADE
     let x1 = board.find(b => b.chessPiece === 0 && b.calcId === this.piece.calcId - 1); // prettier-ignore
     let x2 = board.find(b => b.chessPiece === 0 && b.calcId === this.piece.calcId - 2); // prettier-ignore

@@ -109,7 +109,7 @@ class Chess extends Component {
   // first click on piece
   handleClick = clickedPiece => {
     // prettier-ignore
-    const { board: boardState, previousClicked, clicked, lastMove } = this.state;
+    const { board: boardState, previousClicked, clicked, lastMove, checkedBlack, checkedWhite } = this.state;
     const { turn_white, current } = this.state;
 
     // check if it is second click in row or clicked on empty square
@@ -117,7 +117,10 @@ class Chess extends Component {
       toast.error("You cant rewrite history! return to latest move");
       return;
     } else if (clickedPiece.chessPiece === 0) return;
-
+    let check = false;
+    if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
+      check = true;
+    }
     let boardCopy = [...boardState];
     // let chessPiece = clickedPiece.chessPiece.substring(1, 2);
     let color = clickedPiece.chessPiece.substring(0, 1);
@@ -126,7 +129,7 @@ class Chess extends Component {
     if (turn_white && color === "b") { toast.error(`It isn't ${color} move`, toastOptions); return; } // prettier-ignore
     if (!turn_white && color === "w") { toast.error(`it isn't ${color} move`, toastOptions); return; } // prettier-ignore
 
-    let validMoves = showValidMoves(clickedPiece, boardCopy, lastMove);
+    let validMoves = showValidMoves(clickedPiece, boardCopy, lastMove, check);
     if (validMoves.length === 0) return;
     this.setState({
       clicked: !clicked,
@@ -141,7 +144,8 @@ class Chess extends Component {
     const { board: boardState, previousClicked, clicked, validMoves, lastMove, turn_white } = this.state;
     const previous = { ...previousClicked };
     const current = { ...clickedPiece };
-
+    console.log("current", previous);
+    let check = false;
     let clonedBoard = JSON.parse(JSON.stringify(boardState));
     let board = boardState.slice(0);
 
@@ -152,13 +156,12 @@ class Chess extends Component {
       return;
     }
     // prettier-ignore
-    this.specialFiguresMov(clickedPiece, previousClicked, lastMove, board);
+    this.specialFiguresMov(clickedPiece, previousClicked, lastMove, board, check);
 
     board = movePiece(board, clickedPiece, previousClicked);
     // CHECK KING IF HE ISN'T "CHECKED"
     let checkedBlack = isChecked(board, "b");
     let checkedWhite = isChecked(board, "w");
-
     // undo move if the one who moves has checked king after turn
     if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
       // invalid move, undo move
@@ -226,15 +229,15 @@ class Chess extends Component {
     });
   };
 
-  specialFiguresMov = (current, previous, lastMove, board) => {
+  specialFiguresMov = (current, previous, lastMove, board, check) => {
     // prettier-ignore
     let previousPiece = previous.chessPiece.substring(1, 2);
     if ((current.calcId < 29 || current.calcId > 90) && previousPiece === "P") {
       this.popupChoice(previous.chessPiece, current);
       toast.info("Choose one of figures", toastOptions);
     }
-
-    if (previousPiece === "K") {
+    console.log(check);
+    if (previousPiece === "K" && !check) {
       board = rochadeMove(previous, current, board);
     }
 
