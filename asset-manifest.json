@@ -1,0 +1,18 @@
+{
+  "main.css": "/chess/static/css/main.14ebd225.chunk.css",
+  "main.js": "/chess/static/js/main.5aa87273.chunk.js",
+  "main.js.map": "/chess/static/js/main.5aa87273.chunk.js.map",
+  "runtime~main.js": "/chess/static/js/runtime~main.083cda61.js",
+  "runtime~main.js.map": "/chess/static/js/runtime~main.083cda61.js.map",
+  "static/css/2.189c9f69.chunk.css": "/chess/static/css/2.189c9f69.chunk.css",
+  "static/js/2.b6336dce.chunk.js": "/chess/static/js/2.b6336dce.chunk.js",
+  "static/js/2.b6336dce.chunk.js.map": "/chess/static/js/2.b6336dce.chunk.js.map",
+  "index.html": "/chess/index.html",
+  "precache-manifest.2ca552c183c1f829ab278e8e06b8efc5.js": "/chess/precache-manifest.2ca552c183c1f829ab278e8e06b8efc5.js",
+  "service-worker.js": "/chess/service-worker.js",
+  "static/css/2.189c9f69.chunk.css.map": "/chess/static/css/2.189c9f69.chunk.css.map",
+  "static/css/main.14ebd225.chunk.css.map": "/chess/static/css/main.14ebd225.chunk.css.map",
+  "static/media/bq.webp": "/chess/static/media/bq.30e01051.webp",
+  "static/media/chess-project.png": "/chess/static/media/chess-project.2352380c.png",
+  "static/media/restart-button.jpg": "/chess/static/media/restart-button.1d250b39.jpg"
+}
