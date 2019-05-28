@@ -2,6 +2,8 @@
 
 ![chess game showcase](https://github.com/Slendos/react-chessGame/blob/master/src/images/chess-project.png)
 
+[Link](https://slendos.github.io/react-chessGame/)
+
 ## Built with
 
 ### Languages
