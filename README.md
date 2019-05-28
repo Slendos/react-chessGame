@@ -1,4 +1,4 @@
-# React Artifact Game
+# React Chess Game
 
 ![chess game showcase](https://github.com/Slendos/react-chessGame/blob/master/src/images/chess-project.png)
 
