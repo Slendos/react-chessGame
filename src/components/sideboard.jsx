@@ -23,7 +23,7 @@ class Sideboard extends Component {
         <div className="parentTime">
           <div
             className="moveBoard"
-            style={{ border: history.length > 0 && "2px solid black" }}
+            // style={{ border: history.length > 0 && "2px solid black" }}
           >
             <div>
               <Movement

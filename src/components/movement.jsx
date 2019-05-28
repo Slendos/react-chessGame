@@ -10,9 +10,11 @@ const Movement = props => {
         <div
           className="history"
           onClick={() => historySearch(boardHistory[i], count, i)}
-          key={`${m}${m}${i}`}
+          key={`${m}${i}${m}`}
         >
-          <span style={{ float: "left", marginLeft: "5px" }}>{i + 1 + "."}</span>
+          <span style={{ float: "left", marginLeft: "5px" }}>
+            {i + 1 + "."}
+          </span>
           <span>{`${m}`}</span>
         </div>
       ))}

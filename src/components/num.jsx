@@ -1,7 +1,7 @@
 import React from "react";
 
-const Num = props => {
-  let { numbers, reverse } = props;
+const Num = ({ reverse }) => {
+  let numbers = [8, 7, 6, 5, 4, 3, 2, 1];
   reverse && numbers.reverse();
   return (
     <div className={`numParent`}>

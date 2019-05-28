@@ -7,14 +7,16 @@ class Popup extends Component {
 
     return (
       <div className="popup-wrapper">
-        <div style={{ display: "table-cell", verticalAlign: "middle" }}>
+        <div className="popup-container">
           {pieces.map(piece => (
-            <ChessPiece
-              key={piece}
-              handleClick={handleClick}
-              piece={`${popupItems.color}${piece}`}
-              popupItems={popupItems}
-            />
+            <div className="popup-item">
+              <ChessPiece
+                key={piece}
+                handleClick={handleClick}
+                piece={`${popupItems.color}${piece}`}
+                popupItems={popupItems}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
-const Alph = props => {
-  let { letters, reverse } = props;
+const Alph = ({ reverse }) => {
+  let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
   reverse && letters.reverse();
   return (
     <div className={`alphParent`}>

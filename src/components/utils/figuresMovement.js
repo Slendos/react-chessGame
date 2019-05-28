@@ -61,7 +61,7 @@ export default class pieces {
   // QUEEN's MOVES
   Q() {
     let moves = [];
-    // bishop and rook together
+    // queen moves as bishop and rook together
     let rookPiece = new pieces(this.data, this.piece);
     moves = rookPiece.R();
     let bishopPiece = new pieces(this.data, this.piece);
@@ -91,7 +91,6 @@ export default class pieces {
       }
     }
 
-    // console.log(isChecked, "isCHecked");
     // if king is checked player can't do rochade
     if (this.isChecked) return moves;
     // SMALL ROCHADE
@@ -176,6 +175,8 @@ function bMovesRMoves(data, piece, moveCoordinates) {
   let move;
   let failCount = 0;
   let obstacle = false;
+
+  // bishop and rook are moving in 4 directions
   while (failCount < 4) {
     move = board.find(
       b =>
@@ -197,7 +198,7 @@ function bMovesRMoves(data, piece, moveCoordinates) {
     let chessPiece = move.chessPiece;
     let obstacleColor = chessPiece && chessPiece.substring(0, 1);
     let movingPieceColor = piece.chessPiece.substring(0, 1);
-    // looking for opposite color of figure
+    // looking for opposite color of figure(obstacle)
     if (chessPiece !== 0 && obstacleColor !== movingPieceColor) {
       obstacle = true;
     }

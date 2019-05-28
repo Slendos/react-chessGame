@@ -12,12 +12,13 @@ import rochadeMove from "./utils/rochade";
 import isChecked from "./utils/isChecked";
 import isCheckmate from "./utils/isCheckmate";
 import { showValidMoves } from "./utils/showValidMoves";
+import { prepareBoard } from "./utils/prepareBoard";
 import getMovementHistory from "./utils/movementHistory";
 import movePiece from "./utils/movePiece";
 import passantMove from "./utils/passantMove";
 
 import "react-toastify/dist/ReactToastify.css";
-import { prepareBoard } from "./utils/prepareBoard";
+import ChessBoard from "./chessBoard";
 
 toast.configure();
 
@@ -93,8 +94,8 @@ class Chess extends Component {
     count === index + 1 ? (current = true) : (current = false);
     this.setState({
       board: board,
-      current,
-      validMoves: []
+      current
+      // validMoves: []
     });
   };
 
@@ -109,7 +110,7 @@ class Chess extends Component {
   // first click on piece
   handleClick = clickedPiece => {
     // prettier-ignore
-    const { board: boardState, previousClicked, clicked, lastMove, checkedBlack, checkedWhite } = this.state;
+    const { board: boardState, clicked, lastMove, checkedBlack, checkedWhite } = this.state;
     const { turn_white, current } = this.state;
 
     // check if it is second click in row or clicked on empty square
@@ -117,12 +118,13 @@ class Chess extends Component {
       toast.error("You cant rewrite history! return to latest move");
       return;
     } else if (clickedPiece.chessPiece === 0) return;
+
     let check = false;
     if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
       check = true;
     }
+
     let boardCopy = [...boardState];
-    // let chessPiece = clickedPiece.chessPiece.substring(1, 2);
     let color = clickedPiece.chessPiece.substring(0, 1);
 
     // validating with witch pieces we can move
@@ -141,10 +143,11 @@ class Chess extends Component {
   // second click -> moving figure
   handleMove = clickedPiece => {
     // prettier-ignore
-    const { board: boardState, previousClicked, clicked, validMoves, lastMove, turn_white } = this.state;
+    const { board: boardState, previousClicked, clicked, validMoves, lastMove, turn_white, current: currentHistory } = this.state;
     const previous = { ...previousClicked };
     const current = { ...clickedPiece };
-    console.log("current", previous);
+
+    if (!currentHistory) return;
     let check = false;
     let clonedBoard = JSON.parse(JSON.stringify(boardState));
     let board = boardState.slice(0);
@@ -156,7 +159,7 @@ class Chess extends Component {
       return;
     }
     // prettier-ignore
-    this.specialFiguresMov(clickedPiece, previousClicked, lastMove, board, check);
+    board = this.specialFiguresMov(clickedPiece, previousClicked, lastMove, board, check);
 
     board = movePiece(board, clickedPiece, previousClicked);
     // CHECK KING IF HE ISN'T "CHECKED"
@@ -164,11 +167,11 @@ class Chess extends Component {
     let checkedWhite = isChecked(board, "w");
     // undo move if the one who moves has checked king after turn
     if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
-      // invalid move, undo move
       toast.info("check", toastOptions);
-      board = clonedBoard;
+
+      // invalid move, undo move
       this.setState({
-        board,
+        board: clonedBoard,
         clicked: !clicked,
         validMoves: [],
         checkedWhite: false,
@@ -187,7 +190,6 @@ class Chess extends Component {
       else {
         toast.info("check", toastOptions);
       }
-      // toast("ez win");
     } else if (checkedWhite) {
       let isEnd = isCheckmate(board, "w");
       if (isEnd)
@@ -244,6 +246,8 @@ class Chess extends Component {
     if (previousPiece === "P" && lastMove) {
       board = passantMove(board, lastMove, current, previous);
     }
+    //test
+    return board;
   };
 
   render() {
@@ -253,10 +257,10 @@ class Chess extends Component {
       popupChoice,
       popupItems,
       clicked,
-      turn_white
+      turn_white,
+      validMoves
     } = this.state;
-    const letters = ["a", "b", "c", "d", "e", "f", "g", "h"];
-    const numbers = [8, 7, 6, 5, 4, 3, 2, 1];
+
     return (
       <div>
         <div className="content">
@@ -265,31 +269,18 @@ class Chess extends Component {
             handleReset={this.handleReset}
             handleRotation={this.handleRotation}
           />
-          <div className="parent">
-            <div className={`chessboard ${reverse && "reverse"}`}>
-              {board.map(square => (
-                <Square
-                  key={square.squareId}
-                  data={square}
-                  clicked={clicked}
-                  handleClick={this.handleClick}
-                  handleMove={this.handleMove}
-                  validMoves={this.state.validMoves}
-                  reverse={reverse}
-                  board={board}
-                  turn_white={turn_white}
-                />
-              ))}
-            </div>
-            {popupChoice && (
-              <Popup
-                popupItems={popupItems}
-                handleClick={this.handlePawnChange}
-              />
-            )}
-            <Num numbers={numbers} reverse={reverse} />
-            <Alph letters={letters} reverse={reverse} />
-          </div>
+          <ChessBoard
+            board={board}
+            clicked={clicked}
+            handleClick={this.handleClick}
+            handleMove={this.handleMove}
+            validMoves={validMoves}
+            reverse={reverse}
+            turn_white={turn_white}
+            popupChoice={popupChoice}
+            popupItems={popupItems}
+            handlePawnChange={this.handlePawnChange}
+          />
           <Sideboard
             isReverse={reverse}
             history={this.state.movementHistory}
