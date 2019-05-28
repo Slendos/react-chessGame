@@ -2,13 +2,13 @@
 
 ![chess game showcase](https://github.com/Slendos/react-chessGame/blob/master/src/images/chess-project.png)
 
-## Build with
+## Built with
 
 ### Languages
 
 - HTML
 - CSS
-- Javascript
+- JavaScript
 
 ### Libraries
 
@@ -26,7 +26,6 @@
 - [x] reverse board
 
 - [x] history of moves
-- [x] One-liner explaining the purpose of the module
 
 ## Todo
 
