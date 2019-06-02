@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 
-import Popup from "./popup";
-import Square from "./square";
 import Buttons from "./buttons";
-import Alph from "./alph";
-import Num from "./num";
+import ChessBoard from "./chessBoard";
 import Sideboard from "./sideboard";
 
 import rochadeMove from "./utils/rochade";
@@ -18,7 +15,6 @@ import movePiece from "./utils/movePiece";
 import passantMove from "./utils/passantMove";
 
 import "react-toastify/dist/ReactToastify.css";
-import ChessBoard from "./chessBoard";
 
 toast.configure();
 
@@ -112,6 +108,9 @@ class Chess extends Component {
     // prettier-ignore
     const { board: boardState, clicked, lastMove, checkedBlack, checkedWhite } = this.state;
     const { turn_white, current } = this.state;
+    let color = clickedPiece.chessPiece.substring(0, 1);
+    let boardCopy = [...boardState];
+    let check = false;
 
     // check if it is second click in row or clicked on empty square
     if (!current) {
@@ -119,15 +118,11 @@ class Chess extends Component {
       return;
     } else if (clickedPiece.chessPiece === 0) return;
 
-    let check = false;
     if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
       check = true;
     }
 
-    let boardCopy = [...boardState];
-    let color = clickedPiece.chessPiece.substring(0, 1);
-
-    // validating with witch pieces we can move
+    // validating with which pieces we can move
     if (turn_white && color === "b") { toast.error(`It isn't ${color} move`, toastOptions); return; } // prettier-ignore
     if (!turn_white && color === "w") { toast.error(`it isn't ${color} move`, toastOptions); return; } // prettier-ignore
 
@@ -162,9 +157,11 @@ class Chess extends Component {
     board = this.specialFiguresMov(clickedPiece, previousClicked, lastMove, board, check);
 
     board = movePiece(board, clickedPiece, previousClicked);
+
     // CHECK KING IF HE ISN'T "CHECKED"
     let checkedBlack = isChecked(board, "b");
     let checkedWhite = isChecked(board, "w");
+
     // undo move if the one who moves has checked king after turn
     if ((checkedWhite && turn_white) || (checkedBlack && !turn_white)) {
       toast.info("check", toastOptions);
@@ -179,9 +176,10 @@ class Chess extends Component {
       });
       return;
     }
+
     // CHECK IF IT IS END OF GAME
     if (checkedBlack) {
-      let isEnd = isCheckmate(board, "b", clickedPiece);
+      let isEnd = isCheckmate(board, "b");
       if (isEnd)
         toast.success("CHECKMATE- White won restart game to play again", {
           ...toastOptions,

@@ -2,15 +2,18 @@ import { showValidMoves } from "./showValidMoves";
 
 export default function isChecked(board, color) {
   let attackedPositions = [];
-  let abc;
-  // filtering all /color/ pieces
+  let validMoves;
+
+  // picking all /color/ pieces
   let chessPieces = board.filter(
     b => b.chessPiece && b.chessPiece.substring(0, 1) !== color
   );
+
+  // picking all positions that are pieces attacking
   for (let i = 0; i < chessPieces.length; i++) {
-    abc = showValidMoves(chessPieces[i], board);
-    for (let j = 0; j < abc.length; j++) {
-      if (abc[j] !== undefined) attackedPositions.push(abc[j]);
+    validMoves = showValidMoves(chessPieces[i], board);
+    for (let j = 0; j < validMoves.length; j++) {
+      if (validMoves[j] !== undefined) attackedPositions.push(validMoves[j]);
     }
   }
 

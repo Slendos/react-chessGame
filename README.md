@@ -39,4 +39,4 @@
 
 - [ ] check for draw && check for three same moves from each opponent
 
-- [ ] ???add AI???
+- [ ] add AI

@@ -1,9 +1,8 @@
-import {
-  showValidMoves
-} from './showValidMoves';
-import isChecked from './isChecked';
+import { showValidMoves } from "./showValidMoves";
+import isChecked from "./isChecked";
 
-export default function isCheckmate(board, color, checkingFigure) {
+// kings is checked and we are trying to move with every figure, if there are no possible moves -> checkmate
+export default function isCheckmate(board, color) {
   let copyBoard = [...board];
   let figures = copyBoard.filter(
     b => b.chessPiece && b.chessPiece.substring(0, 1) === color
@@ -18,13 +17,10 @@ export default function isCheckmate(board, color, checkingFigure) {
 
     for (let j = 0; j < valid.length; j++) {
       if (valid[j] === undefined) continue;
-      // copy moving previous figure position and current figure position
-      let previousPosition = {
-        ...board[figures[i].id]
-      };
-      let validCopy = {
-        ...valid[j]
-      };
+
+      // copy before moving previous figure position and current figure position
+      let previousPosition = { ...board[figures[i].id] };
+      let validCopy = { ...valid[j] };
 
       // move pieces
       copyBoard[valid[j].id].chessPiece = figures[i].chessPiece;
@@ -33,7 +29,6 @@ export default function isCheckmate(board, color, checkingFigure) {
       // check if the position still has check
       if (!isChecked(copyBoard, color)) {
         isEnd = false;
-
       }
 
       // move pieces back to previous position
@@ -44,4 +39,4 @@ export default function isCheckmate(board, color, checkingFigure) {
     }
   }
   return isEnd;
-};
+}
