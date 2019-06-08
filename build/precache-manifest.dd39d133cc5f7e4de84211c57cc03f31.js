@@ -16,23 +16,23 @@ self.__precacheManifest = [
     "url": "/react-chessGame/static/js/runtime~main.453e6949.js"
   },
   {
-    "revision": "51e58d0456f21738f9c3",
-    "url": "/react-chessGame/static/js/main.a0c7f1db.chunk.js"
+    "revision": "30bbb09a7aab528d413c",
+    "url": "/react-chessGame/static/js/main.ba65771b.chunk.js"
   },
   {
-    "revision": "0a9fb2d3ad269f436ecb",
-    "url": "/react-chessGame/static/js/2.b6336dce.chunk.js"
+    "revision": "7184534e5988228742e3",
+    "url": "/react-chessGame/static/js/2.1720cbc1.chunk.js"
   },
   {
-    "revision": "51e58d0456f21738f9c3",
-    "url": "/react-chessGame/static/css/main.e9183e27.chunk.css"
+    "revision": "30bbb09a7aab528d413c",
+    "url": "/react-chessGame/static/css/main.8b5ed922.chunk.css"
   },
   {
-    "revision": "0a9fb2d3ad269f436ecb",
-    "url": "/react-chessGame/static/css/2.189c9f69.chunk.css"
+    "revision": "7184534e5988228742e3",
+    "url": "/react-chessGame/static/css/2.f992f7d0.chunk.css"
   },
   {
-    "revision": "da33bf0f429858efe429e63de5b98dfd",
+    "revision": "a0e4fcaca2379003814bfbf6d6ea6f6a",
     "url": "/react-chessGame/index.html"
   }
 ];
