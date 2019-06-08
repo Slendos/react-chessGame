@@ -174,7 +174,7 @@ img {
 .history-parent {
   display: flex;
   flex-wrap: wrap;
-  padding: 5px;
+  /* padding: 5px; */
   justify-content: space-between;
 }
 
@@ -243,6 +243,7 @@ img {
 }
 
 .button-rotate {
+  cursor: pointer;
   width: 60px;
   height: 60px;
   border-radius: 5px;

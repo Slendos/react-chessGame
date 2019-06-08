@@ -5,14 +5,14 @@ import Buttons from "./buttons";
 import ChessBoard from "./chessBoard";
 import Sideboard from "./sideboard";
 
-import rochadeMove from "./utils/rochade";
-import isChecked from "./utils/isChecked";
-import isCheckmate from "./utils/isCheckmate";
-import { showValidMoves } from "./utils/showValidMoves";
-import { prepareBoard } from "./utils/prepareBoard";
-import getMovementHistory from "./utils/movementHistory";
-import movePiece from "./utils/movePiece";
-import passantMove from "./utils/passantMove";
+import rochadeMove from "../utils/rochade";
+import isChecked from "../utils/isChecked";
+import isCheckmate from "../utils/isCheckmate";
+import { showValidMoves } from "../utils/showValidMoves";
+import { prepareBoard } from "../utils/prepareBoard";
+import getMovementHistory from "../utils/movementHistory";
+import movePiece from "../utils/movePiece";
+import passantMove from "../utils/passantMove";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -96,7 +96,7 @@ class Chess extends Component {
   };
 
   popupChoice = (pieceName, clicked) => {
-    let popupItems = Object.assign({}, this.state.popupItems);
+    let { popupItems } = this.state;
     popupItems.pieceName = pieceName;
     popupItems.clicked = clicked;
     popupItems.color = pieceName.substring(0, 1);
