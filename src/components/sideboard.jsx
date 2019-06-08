@@ -12,7 +12,6 @@ class Sideboard extends Component {
     } = this.props;
 
     let turn = turn_white;
-    console.log(this.props);
     if (isReverse) turn = !turn;
     return (
       <div>

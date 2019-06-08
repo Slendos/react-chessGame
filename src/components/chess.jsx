@@ -45,7 +45,6 @@ class Chess extends Component {
   };
 
   componentDidMount() {
-    console.log("MOUNT");
     this.renderBoard();
   }
 
